@@ -1470,15 +1470,31 @@ main{max-width:980px;margin:0 auto;padding:22px 16px 90px;background:var(--black
 <!-- JOGOS -->
 <div id="jogos" class="sec">
   <div class="sh"><div class="sh-line" style="background:var(--orange)"></div><h2>Calendário</h2></div>
-  <div class="filter-row">
-    <button class="fb active" onclick="filterM('all',this)">Todos</button>
-    <button class="fb" onclick="filterM('bra',this)">🇧🇷 Brasil</button>
+  <div class="filter-row" id="phase-filters">
+    <button class="fb active" onclick="filterPhase('all',this)">Todos</button>
+    <button class="fb" onclick="filterPhase('bra',this)">🇧🇷 Brasil</button>
+    <button class="fb" onclick="filterPhase('grupos',this)">Fase de Grupos</button>
+    <button class="fb" onclick="filterPhase('avos',this)">Segunda Fase</button>
+    <button class="fb" onclick="filterPhase('oitavas',this)">Oitavas</button>
+    <button class="fb" onclick="filterPhase('quartas',this)">Quartas</button>
+    <button class="fb" onclick="filterPhase('semi',this)">Semifinal</button>
+    <button class="fb" onclick="filterPhase('terceiro',this)">3º Lugar</button>
+    <button class="fb" onclick="filterPhase('final',this)">Final</button>
+  </div>
+  <div class="filter-row" id="group-filters" style="display:none">
+    <button class="fb active" onclick="filterM('grupos',this)">Todos os Grupos</button>
     <button class="fb" onclick="filterM('A',this)">Grupo A</button>
     <button class="fb" onclick="filterM('B',this)">Grupo B</button>
     <button class="fb" onclick="filterM('C',this)">Grupo C</button>
     <button class="fb" onclick="filterM('D',this)">Grupo D</button>
     <button class="fb" onclick="filterM('E',this)">Grupo E</button>
     <button class="fb" onclick="filterM('F',this)">Grupo F</button>
+    <button class="fb" onclick="filterM('G',this)">Grupo G</button>
+    <button class="fb" onclick="filterM('H',this)">Grupo H</button>
+    <button class="fb" onclick="filterM('I',this)">Grupo I</button>
+    <button class="fb" onclick="filterM('J',this)">Grupo J</button>
+    <button class="fb" onclick="filterM('K',this)">Grupo K</button>
+    <button class="fb" onclick="filterM('L',this)">Grupo L</button>
   </div>
   <div class="mwrap" id="mwrap"></div>
 </div>
@@ -3715,16 +3731,36 @@ gg.innerHTML=gh;
 // ─── RENDER MATCHES ───────────────────────────────────────────────────────────
 var curF='all';
 
+var GRUPO_LETRAS=['A','B','C','D','E','F','G','H','I','J','K','L'];
 function matchSortKey(m){
-  // m.d = 'DD/MM' , m.t = 'HH:MM'
   var dp=(m.d||'01/01').split('/'), tp=(m.t||'00:00').split(':');
   var dia=parseInt(dp[0],10)||0, mes=parseInt(dp[1],10)||0;
   var hh=parseInt(tp[0],10)||0, mm=parseInt(tp[1],10)||0;
   return mes*1000000+dia*10000+hh*100+mm;
 }
+function filterPhase(f,btn){
+  document.querySelectorAll('#phase-filters .fb').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var gf=document.getElementById('group-filters');
+  if(f==='grupos'){
+    gf.style.display='flex';
+    gf.querySelectorAll('.fb').forEach(function(b){b.classList.remove('active');});
+    gf.querySelector('.fb').classList.add('active');
+    curF='grupos';
+  } else {
+    gf.style.display='none';
+    curF=f;
+  }
+  renderMatches(curF);
+}
 function renderMatches(f){
   var w=document.getElementById('mwrap');
-  var data=f==='all'?MATCHES.slice():f==='bra'?MATCHES.filter(function(m){return m.bra;}):MATCHES.filter(function(m){return m.g===f;});
+  var data;
+  if(f==='all') data=MATCHES.slice();
+  else if(f==='bra') data=MATCHES.filter(function(m){return m.bra;});
+  else if(f==='grupos') data=MATCHES.filter(function(m){return GRUPO_LETRAS.indexOf(m.g)!==-1;});
+  else if(GRUPO_LETRAS.indexOf(f)!==-1) data=MATCHES.filter(function(m){return m.g===f;});
+  else data=MATCHES.filter(function(m){return m.g===f;});
   data.sort(function(a,b){return matchSortKey(b)-matchSortKey(a);});
   if(!data.length){w.innerHTML='<div style="padding:24px;text-align:center;color:var(--muted)">Sem jogos</div>';return;}
 
@@ -3755,7 +3791,7 @@ function renderMatches(f){
 }
 function filterM(f,btn){
   curF=f;
-  document.querySelectorAll('.fb').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('#group-filters .fb').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
   renderMatches(f);
 }
