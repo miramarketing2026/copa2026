@@ -2,6 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#006825">
@@ -1809,6 +1812,8 @@ var GROUPS=[
   {l:'L',color:'#001a3a',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra',code:'ENG',conf:'UEFA',rank:5},{f:'🇭🇷',n:'Croácia',code:'CRO',conf:'UEFA',rank:11},{f:'🇬🇭',n:'Gana',code:'GHA',conf:'CAF',rank:65},{f:'🇵🇦',n:'Panamá',code:'PAN',conf:'CONCACAF',rank:43}]}
 ];
 
+var APP_VERSION = '2026-06-30-1';
+
 var MATCHES=[
   // ── 1ª RODADA ──
   {g:'A',d:'11/06',h:'🇲🇽 México',a:'🇿🇦 África do Sul',t:'16:00',l:'Cidade do México',bra:false,yt:'https://www.youtube.com/live/YCNysrewn7k?si=jvv1YuakdkKAz4Bm'},
@@ -1819,10 +1824,10 @@ var MATCHES=[
   {g:'B',d:'13/06',h:'🇶🇦 Catar',a:'🇨🇭 Suíça',t:'16:00',l:'San Francisco',bra:false,yt:'https://www.youtube.com/live/ljah6d9m7Z0?si=CHkf6pdxrPUg86Ov'},
   {g:'C',d:'13/06',h:'🇧🇷 Brasil',a:'🇲🇦 Marrocos',t:'19:00',l:'Nova York/NJ',bra:true,yt:'https://www.youtube.com/live/vC3fV_awcWE?si=RB-gwKgIlyHo1_0w'},
   {g:'C',d:'13/06',h:'🇭🇹 Haiti',a:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia',t:'22:00',l:'Boston',bra:false,yt:'https://www.youtube.com/live/yBUg81qhrNo?si=J3S9OSsNMoB7_xui'},
-  {g:'E',d:'14/06',h:'🇩🇪 Alemanha',a:'🇨🇼 Curaçao',t:'14:00',l:'Houston',bra:false,yt:'https://www.youtube.com/live/byP1peOCkzI?si=Gi3WEOg-3D-etmf0'},
+  {g:'E',d:'14/06',h:'🇩🇪 Alemanha',a:'🇨🇼 Curaçau',t:'14:00',l:'Houston',bra:false,yt:'https://www.youtube.com/live/byP1peOCkzI?si=Gi3WEOg-3D-etmf0'},
   {g:'F',d:'14/06',h:'🇳🇱 Holanda',a:'🇯🇵 Japão',t:'17:00',l:'Dallas',bra:false,yt:'https://www.youtube.com/live/6Ca_GzyVOs0?si=MyqcroWOWk070LNN'},
-  {g:'E',d:'14/06',h:'🇨🇮 C.Marfim',a:'🇪🇨 Equador',t:'20:00',l:'Filadélfia',bra:false,yt:'https://www.youtube.com/live/IFh8Nuuhgcc?si=lnyDAXedIZgM6rqs'},
-  {g:'F',d:'14/06',h:'🌍 Rep. UEFA',a:'🇹🇳 Tunísia',t:'23:00',l:'Monterrey',bra:false},
+  {g:'E',d:'14/06',h:'🇨🇮 Costa do Marfim',a:'🇪🇨 Equador',t:'20:00',l:'Filadélfia',bra:false,yt:'https://www.youtube.com/live/IFh8Nuuhgcc?si=lnyDAXedIZgM6rqs'},
+  {g:'F',d:'14/06',h:'🇸🇪 Suécia',a:'🇹🇳 Tunísia',t:'23:00',l:'Monterrey',bra:false},
   {g:'H',d:'15/06',h:'🇪🇸 Espanha',a:'🇨🇻 Cabo Verde',t:'13:00',l:'Atlanta',bra:false},
   {g:'H',d:'15/06',h:'🇸🇦 Arábia Saudita',a:'🇺🇾 Uruguai',t:'19:00',l:'Miami',bra:false},
   {g:'G',d:'15/06',h:'🇧🇪 Bélgica',a:'🇪🇬 Egito',t:'16:00',l:'Lumen Field · Seattle',bra:false,yt:'https://www.youtube.com/live/EYStZQ5FsVk'},
@@ -1844,16 +1849,16 @@ var MATCHES=[
   {g:'D',d:'19/06',h:'🇺🇸 EUA',a:'🇦🇺 Austrália',t:'16:00',l:'Seattle',bra:false},
   {g:'C',d:'19/06',h:'🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escócia',a:'🇲🇦 Marrocos',t:'19:00',l:'Boston',bra:false},
   {g:'C',d:'19/06',h:'🇧🇷 Brasil',a:'🇭🇹 Haiti',t:'21:30',l:'Filadélfia',bra:true},
-  {g:'F',d:'20/06',h:'🇳🇱 Holanda',a:'🌍 Rep. UEFA',t:'14:00',l:'Houston',bra:false},
-  {g:'E',d:'20/06',h:'🇩🇪 Alemanha',a:'🇨🇮 C.Marfim',t:'17:00',l:'Toronto',bra:false},
-  {g:'E',d:'20/06',h:'🇪🇨 Equador',a:'🇨🇼 Curaçao',t:'21:00',l:'Kansas City',bra:false},
+  {g:'F',d:'20/06',h:'🇳🇱 Holanda',a:'🇸🇪 Suécia',t:'14:00',l:'Houston',bra:false},
+  {g:'E',d:'20/06',h:'🇩🇪 Alemanha',a:'🇨🇮 Costa do Marfim',t:'17:00',l:'Toronto',bra:false},
+  {g:'E',d:'20/06',h:'🇪🇨 Equador',a:'🇨🇼 Curaçau',t:'21:00',l:'Kansas City',bra:false},
   {g:'F',d:'21/06',h:'🇹🇳 Tunísia',a:'🇯🇵 Japão',t:'01:00',l:'Monterrey',bra:false},
   {g:'H',d:'21/06',h:'🇪🇸 Espanha',a:'🇸🇦 Arábia Saudita',t:'13:00',l:'Atlanta',bra:false},
   {g:'G',d:'21/06',h:'🇧🇪 Bélgica',a:'🇮🇷 Irã',t:'16:00',l:'Los Angeles',bra:false},
   {g:'H',d:'21/06',h:'🇺🇾 Uruguai',a:'🇨🇻 Cabo Verde',t:'19:00',l:'Miami',bra:false},
   {g:'G',d:'21/06',h:'🇳🇿 Nova Zelândia',a:'🇪🇬 Egito',t:'22:00',l:'Vancouver',bra:false},
   {g:'J',d:'22/06',h:'🇦🇷 Argentina',a:'🇦🇹 Áustria',t:'14:00',l:'Dallas',bra:false},
-  {g:'I',d:'22/06',h:'🇫🇷 França',a:'🌍 Rep. FIFA',t:'18:00',l:'Filadélfia',bra:false},
+  {g:'I',d:'22/06',h:'🇫🇷 França',a:'🇮🇶 Iraque',t:'18:00',l:'Filadélfia',bra:false},
   {g:'I',d:'22/06',h:'🇳🇴 Noruega',a:'🇸🇳 Senegal',t:'21:00',l:'Nova York/NJ',bra:false},
   {g:'J',d:'23/06',h:'🇯🇴 Jordânia',a:'🇩🇿 Argélia',t:'00:00',l:'San Francisco',bra:false},
   {g:'K',d:'23/06',h:'🇵🇹 Portugal',a:'🇺🇿 Uzbequistão',t:'14:00',l:'Houston',bra:false},
@@ -1868,13 +1873,13 @@ var MATCHES=[
   {g:'A',d:'24/06',h:'🇨🇿 Tchéquia',a:'🇲🇽 México',t:'22:00',l:'Cidade do México',bra:false},
   {g:'A',d:'24/06',h:'🇿🇦 África do Sul',a:'🇰🇷 Coreia do Sul',t:'22:00',l:'Monterrey',bra:false},
   {g:'E',d:'25/06',h:'🇪🇨 Equador',a:'🇩🇪 Alemanha',t:'17:00',l:'Nova York/NJ',bra:false},
-  {g:'E',d:'25/06',h:'🇨🇼 Curaçao',a:'🇨🇮 C.Marfim',t:'17:00',l:'Filadélfia',bra:false},
-  {g:'F',d:'25/06',h:'🇯🇵 Japão',a:'🌍 Rep. UEFA',t:'20:00',l:'Dallas',bra:false},
+  {g:'E',d:'25/06',h:'🇨🇼 Curaçau',a:'🇨🇮 Costa do Marfim',t:'17:00',l:'Filadélfia',bra:false},
+  {g:'F',d:'25/06',h:'🇯🇵 Japão',a:'🇸🇪 Suécia',t:'20:00',l:'Dallas',bra:false},
   {g:'F',d:'25/06',h:'🇹🇳 Tunísia',a:'🇳🇱 Holanda',t:'20:00',l:'Kansas City',bra:false},
   {g:'D',d:'25/06',h:'🇹🇷 Turquia',a:'🇺🇸 EUA',t:'23:00',l:'Los Angeles',bra:false},
   {g:'D',d:'25/06',h:'🇵🇾 Paraguai',a:'🇦🇺 Austrália',t:'23:00',l:'San Francisco',bra:false},
   {g:'I',d:'26/06',h:'🇳🇴 Noruega',a:'🇫🇷 França',t:'16:00',l:'Boston',bra:false},
-  {g:'I',d:'26/06',h:'🇸🇳 Senegal',a:'🌍 Rep. FIFA',t:'16:00',l:'Toronto',bra:false},
+  {g:'I',d:'26/06',h:'🇸🇳 Senegal',a:'🇮🇶 Iraque',t:'16:00',l:'Toronto',bra:false},
   {g:'H',d:'26/06',h:'🇨🇻 Cabo Verde',a:'🇸🇦 Arábia Saudita',t:'21:00',l:'Houston',bra:false},
   {g:'H',d:'26/06',h:'🇺🇾 Uruguai',a:'🇪🇸 Espanha',t:'21:00',l:'Guadalajara',bra:false},
   {g:'G',d:'27/06',h:'🇪🇬 Egito',a:'🇮🇷 Irã',t:'00:00',l:'Seattle',bra:false},
@@ -3769,9 +3774,7 @@ function findResultIdx(m){
   for(var i=0;i<RESULTS.length;i++){
     var r=RESULTS[i];
     if(r.data===( m.d+'·'+m.t )){
-      var rt1=r.time1.split(' ').slice(1).join(' ')||r.time1;
-      var rt2=r.time2.split(' ').slice(1).join(' ')||r.time2;
-      if((rt1===th&&rt2===ta)||(rt1===ta&&rt2===th)) return i;
+      if((r.time1===th&&r.time2===ta)||(r.time1===ta&&r.time2===th)) return i;
     }
   }
   // fallback: mesma data (dia/mes) e mesmos times, ignorando hora exata
@@ -3779,9 +3782,7 @@ function findResultIdx(m){
     var r2=RESULTS[j];
     var rd=(r2.data||'').split('·')[0];
     if(rd===m.d){
-      var rt1b=r2.time1.split(' ').slice(1).join(' ')||r2.time1;
-      var rt2b=r2.time2.split(' ').slice(1).join(' ')||r2.time2;
-      if((rt1b===th&&rt2b===ta)||(rt1b===ta&&rt2b===th)) return j;
+      if((r2.time1===th&&r2.time2===ta)||(r2.time1===ta&&r2.time2===th)) return j;
     }
   }
   return -1;
@@ -5043,6 +5044,23 @@ function show(id,btn){
   if(btn)btn.classList.add('active');
   window.scrollTo(0,0);
 }
+
+// ─── SISTEMA DE ATUALIZAÇÃO AUTOMÁTICA (sem reinstalar o app) ──────────────────
+(function(){
+  try{
+    var STORAGE_KEY='copa2026_app_version';
+    var lastSeen=localStorage.getItem(STORAGE_KEY);
+    if(lastSeen && lastSeen!==APP_VERSION){
+      // versão mudou = nova atualização disponível -> avisa o usuário
+      var banner=document.createElement('div');
+      banner.id='update-banner';
+      banner.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(135deg,#00b34a,#007a30);color:#fff;padding:12px 16px;text-align:center;font-weight:700;font-size:.85rem;box-shadow:0 4px 12px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap';
+      banner.innerHTML='🔄 Nova atualização disponível! <button onclick="location.reload(true)" style="background:#fff;color:#007a30;border:none;padding:6px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:.8rem">Atualizar agora</button>';
+      document.body.prepend(banner);
+    }
+    localStorage.setItem(STORAGE_KEY, APP_VERSION);
+  }catch(e){}
+})();
 
 </script>
 <!-- ══ MODAL DE SENHA ══ -->
