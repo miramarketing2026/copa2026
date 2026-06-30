@@ -3755,6 +3755,54 @@ function filterPhase(f,btn){
   }
   renderMatches(curF);
 }
+// separa bandeira do nome: "🇲🇽 México" → {flag:'🇲🇽', nome:'México'}
+function splitTeam(s){
+  var parts=s.split(' ');
+  var flag=parts.shift();
+  return {flag:flag, nome:parts.join(' ')};
+}
+
+// verifica se já existe resultado para esse jogo (mesma data e times)
+function findResultIdx(m){
+  if(typeof RESULTS==='undefined'||!RESULTS||!RESULTS.length) return -1;
+  var th=splitTeam(m.h).nome, ta=splitTeam(m.a).nome;
+  for(var i=0;i<RESULTS.length;i++){
+    var r=RESULTS[i];
+    if(r.data===( m.d+'·'+m.t )){
+      var rt1=r.time1.split(' ').slice(1).join(' ')||r.time1;
+      var rt2=r.time2.split(' ').slice(1).join(' ')||r.time2;
+      if((rt1===th&&rt2===ta)||(rt1===ta&&rt2===th)) return i;
+    }
+  }
+  // fallback: mesma data (dia/mes) e mesmos times, ignorando hora exata
+  for(var j=0;j<RESULTS.length;j++){
+    var r2=RESULTS[j];
+    var rd=(r2.data||'').split('·')[0];
+    if(rd===m.d){
+      var rt1b=r2.time1.split(' ').slice(1).join(' ')||r2.time1;
+      var rt2b=r2.time2.split(' ').slice(1).join(' ')||r2.time2;
+      if((rt1b===th&&rt2b===ta)||(rt1b===ta&&rt2b===th)) return j;
+    }
+  }
+  return -1;
+}
+function goToResult(idx){
+  RES_FILTER='all';
+  var rfBtns=document.querySelectorAll('#res-filters .rf');
+  rfBtns.forEach(function(b){b.classList.remove('active');});
+  if(rfBtns[0])rfBtns[0].classList.add('active');
+  renderResults();
+  show('resultados', document.querySelectorAll('.nb')[4]);
+  setTimeout(function(){
+    var cards=document.querySelectorAll('#res-list .rcard, #res-list>div');
+    if(cards[idx]){
+      cards[idx].scrollIntoView({behavior:'smooth',block:'center'});
+      cards[idx].style.outline='2px solid var(--cyan)';
+      setTimeout(function(){cards[idx].style.outline='';},2000);
+    }
+  },150);
+}
+
 function renderMatches(f){
   var w=document.getElementById('mwrap');
   var data;
@@ -3766,75 +3814,37 @@ function renderMatches(f){
   data.sort(function(a,b){return matchSortKey(b)-matchSortKey(a);});
   if(!data.length){w.innerHTML='<div style="padding:24px;text-align:center;color:var(--muted)">Sem jogos</div>';return;}
 
-  // separa bandeira do nome: "🇲🇽 México" → {flag:'🇲🇽', nome:'México'}
-  function splitTeam(s){
-    var parts=s.split(' ');
-    var flag=parts.shift();
-    return {flag:flag, nome:parts.join(' ')};
-  }
-
-  // verifica se já existe resultado para esse jogo (mesma data e times)
-  function findResultIdx(m){
-    if(typeof RESULTS==='undefined'||!RESULTS||!RESULTS.length) return -1;
-    var th=splitTeam(m.h).nome, ta=splitTeam(m.a).nome;
-    for(var i=0;i<RESULTS.length;i++){
-      var r=RESULTS[i];
-      if(r.data===( m.d+'·'+m.t )){
-        var rt1=r.time1.split(' ').slice(1).join(' ')||r.time1;
-        var rt2=r.time2.split(' ').slice(1).join(' ')||r.time2;
-        if((rt1===th&&rt2===ta)||(rt1===ta&&rt2===th)) return i;
-      }
-    }
-    // fallback: mesma data (dia/mes) e mesmos times, ignorando hora exata
-    for(var j=0;j<RESULTS.length;j++){
-      var r2=RESULTS[j];
-      var rd=(r2.data||'').split('·')[0];
-      if(rd===m.d){
-        var rt1b=r2.time1.split(' ').slice(1).join(' ')||r2.time1;
-        var rt2b=r2.time2.split(' ').slice(1).join(' ')||r2.time2;
-        if((rt1b===th&&rt2b===ta)||(rt1b===ta&&rt2b===th)) return j;
-      }
-    }
-    return -1;
-  }
-  function goToResult(idx){
-    RES_FILTER='all';
-    document.querySelectorAll('#res-filters .rf').forEach(function(b){b.classList.remove('active');});
-    var firstRf=document.querySelector('#res-filters .rf');
-    if(firstRf)firstRf.classList.add('active');
-    renderResults();
-    show('resultados', document.querySelectorAll('.nb')[4]);
-    setTimeout(function(){
-      var cards=document.querySelectorAll('#res-list .rcard, #res-list>div');
-      if(cards[idx]){
-        cards[idx].scrollIntoView({behavior:'smooth',block:'center'});
-        cards[idx].style.outline='2px solid var(--cyan)';
-        setTimeout(function(){cards[idx].style.outline='';},2000);
-      }
-    },150);
-  }
-
   var html='',last='';
   data.forEach(function(m){
     if(m.d!==last){html+='<div class="msep">'+m.d+'</div>';last=m.d;}
     var th=splitTeam(m.h), ta=splitTeam(m.a);
     var resIdx=findResultIdx(m);
     html+='<div class="mc'+(m.bra?' bra':'')+(m.yt?' has-live':'')+'">';
-    // Mandante: nome + bandeira (imagem)
-    html+='<div class="mh"><span class="mc-nome">'+th.nome+'</span> '+flagImg(th.flag,28)+'</div>';
-    html+='<div class="mm"><div class="mt">'+m.t+'</div><div class="ml">'+m.l+'</div>';
     if(resIdx!==-1){
-      html+='<button onclick="goToResult('+resIdx+')" class="live-btn" style="background:linear-gradient(135deg,#0a8a3a,#066b2c)">📊 Ver Resultado</button>';
-    } else if(m.yt){
-      html+='<a href="'+m.yt+'" target="_blank" rel="noopener" class="live-btn">▶ Assista ao Vivo</a>';
+      var r=RESULTS[resIdx];
+      // Mandante: nome + bandeira (imagem)
+      html+='<div class="mh"><span class="mc-nome">'+th.nome+'</span> '+flagImg(th.flag,28)+'</div>';
+      html+='<div class="mm">';
+      html+='<div style="font-family:\'Bebas Neue\',sans-serif;font-size:1.4rem;letter-spacing:2px;color:var(--cyan)">'+r.gol1+' x '+r.gol2+'</div>';
+      html+='<button onclick="goToResult('+resIdx+')" class="live-btn" style="background:linear-gradient(135deg,#0a8a3a,#066b2c);margin-top:4px">📊 Ver mais</button>';
+      html+='</div>';
+      html+='<div class="ma">'+flagImg(ta.flag,28)+' <span class="mc-nome">'+ta.nome+'</span></div>';
+    } else {
+      // Mandante: nome + bandeira (imagem)
+      html+='<div class="mh"><span class="mc-nome">'+th.nome+'</span> '+flagImg(th.flag,28)+'</div>';
+      html+='<div class="mm"><div class="mt">'+m.t+'</div><div class="ml">'+m.l+'</div>';
+      if(m.yt){
+        html+='<a href="'+m.yt+'" target="_blank" rel="noopener" class="live-btn">▶ Assista ao Vivo</a>';
+      }
+      html+='</div>';
+      // Visitante: bandeira (imagem) + nome
+      html+='<div class="ma">'+flagImg(ta.flag,28)+' <span class="mc-nome">'+ta.nome+'</span></div>';
     }
-    html+='</div>';
-    // Visitante: bandeira (imagem) + nome
-    html+='<div class="ma">'+flagImg(ta.flag,28)+' <span class="mc-nome">'+ta.nome+'</span></div>';
     html+='</div>';
   });
   w.innerHTML=html;
 }
+
 function filterM(f,btn){
   curF=f;
   document.querySelectorAll('#group-filters .fb').forEach(function(b){b.classList.remove('active');});
