@@ -1477,7 +1477,7 @@ main{max-width:980px;margin:0 auto;padding:22px 16px 90px;background:var(--black
     <button class="fb active" onclick="filterPhase('all',this)">Todos</button>
     <button class="fb" onclick="filterPhase('bra',this)">🇧🇷 Brasil</button>
     <button class="fb" onclick="filterPhase('grupos',this)">Fase de Grupos</button>
-    <button class="fb" onclick="filterPhase('avos',this)">Segunda Fase</button>
+    <button class="fb" onclick="filterPhase('16avos',this)">Segunda Fase</button>
     <button class="fb" onclick="filterPhase('oitavas',this)">Oitavas</button>
     <button class="fb" onclick="filterPhase('quartas',this)">Quartas</button>
     <button class="fb" onclick="filterPhase('semi',this)">Semifinal</button>
@@ -1529,7 +1529,7 @@ main{max-width:980px;margin:0 auto;padding:22px 16px 90px;background:var(--black
     <button class="rf active" onclick="filterResults('all',this)">Todos</button>
     <button class="rf" onclick="filterResults('bra',this)">🇧🇷 Brasil</button>
     <button class="rf" onclick="filterResults('fase_grupos',this)">Fase de Grupos</button>
-    <button class="rf" onclick="filterResults('avos',this)">Segunda Fase</button>
+    <button class="rf" onclick="filterResults('16avos',this)">Segunda Fase</button>
     <button class="rf" onclick="filterResults('oitavas',this)">Oitavas</button>
     <button class="rf" onclick="filterResults('quartas',this)">Quartas</button>
     <button class="rf" onclick="filterResults('semi',this)">Semifinal</button>
@@ -1812,7 +1812,7 @@ var GROUPS=[
   {l:'L',color:'#001a3a',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra',code:'ENG',conf:'UEFA',rank:5},{f:'🇭🇷',n:'Croácia',code:'CRO',conf:'UEFA',rank:11},{f:'🇬🇭',n:'Gana',code:'GHA',conf:'CAF',rank:65},{f:'🇵🇦',n:'Panamá',code:'PAN',conf:'CONCACAF',rank:43}]}
 ];
 
-var APP_VERSION = '2026-07-03-13';
+var APP_VERSION = '2026-07-04-3';
 
 var SQUADS={
   BRA:{name:'Brasil',flag:'🇧🇷',color:'#009C3B',bg:'#002010',coach:'Carlo Ancelotti',rank:6,titles:5,founded:1914,conf:'CONMEBOL',
@@ -2804,6 +2804,7 @@ var MATCHES=[
   {g:'J',d:'17/06',h:'🇦🇹 Áustria',a:'🇯🇴 Jordânia',t:'01:00',l:"Levi's Stadium · Santa Clara",bra:false},
   {g:'K',d:'23/06',h:'🇵🇹 Portugal',a:'🇺🇿 Uzbequistão',t:'14:00',l:'NRG Stadium · Houston',bra:false},
   {g:'L',d:'23/06',h:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',a:'🇬🇭 Gana',t:'17:00',l:'Gillette Stadium · Boston',bra:false},
+  {g:'J',d:'23/06',h:'🇯🇴 Jordânia',a:'🇩🇿 Argélia',t:'00:00',l:"Levi's Stadium · San Francisco",bra:false},
   {g:'L',d:'23/06',h:'🇵🇦 Panamá',a:'🇭🇷 Croácia',t:'20:00',l:'BMO Field · Toronto',bra:false},
   {g:'K',d:'23/06',h:'🇨🇴 Colômbia',a:'🇨🇩 RD Congo',t:'23:00',l:'Hard Rock Stadium · Miami',bra:false},
   {g:'B',d:'24/06',h:'🇨🇭 Suíça',a:'🇨🇦 Canadá',t:'16:00',l:'BC Place · Vancouver',bra:false},
@@ -2830,18 +2831,6 @@ var MATCHES=[
   {g:'K',d:'27/06',h:'🇨🇩 RD Congo',a:'🇺🇿 Uzbequistão',t:'20:30',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
   {g:'J',d:'27/06',h:'🇩🇿 Argélia',a:'🇦🇹 Áustria',t:'23:00',l:'Arrowhead Stadium · Kansas City',bra:false},
   {g:'J',d:'27/06',h:'🇯🇴 Jordânia',a:'🇦🇷 Argentina',t:'23:00',l:'AT&T Stadium · Dallas',bra:false},
-  {g:'avos',d:'28/06',h:'🇿🇦 África do Sul',a:'🇨🇦 Canadá',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false},
-  {g:'avos',d:'29/06',h:'🇧🇷 Brasil',a:'🇯🇵 Japão',t:'14:00',l:'NRG Stadium · Houston',bra:true},
-  {g:'avos',d:'29/06',h:'🇩🇪 Alemanha',a:'🇵🇾 Paraguai',t:'17:30',l:'Gillette Stadium · Boston',bra:false},
-  {g:'avos',d:'29/06',h:'🇳🇱 Holanda',a:'🇲🇦 Marrocos',t:'22:00',l:'El Gigante de Acero · Monterrey',bra:false},
-  {g:'avos',d:'30/06',h:'🇨🇮 Costa do Marfim',a:'🇳🇴 Noruega',t:'14:00',l:'AT&T Stadium · Dallas',bra:false},
-  {g:'avos',d:'30/06',h:'🇫🇷 França',a:'🇸🇪 Suécia',t:'18:00',l:'MetLife Stadium · Nova Jersey',bra:false,yt:'https://www.youtube.com/watch?v=4qbRFozLQhE'},
-  {g:'avos',d:'30/06',h:'🇲🇽 México',a:'🇪🇨 Equador',t:'22:00',l:'Estádio Azteca · Cidade do México',bra:false,yt:'https://www.youtube.com/watch?v=9dmuI66We8A'},
-  {g:'avos',d:'01/07',h:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',a:'🇨🇩 RD Congo',t:'13:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false,yt:'https://www.youtube.com/watch?v=aSXLerQStXA'},
-  {g:'avos',d:'01/07',h:'🇧🇪 Bélgica',a:'🇸🇳 Senegal',t:'17:00',l:'Lumen Field · Seattle',bra:false,yt:'https://www.youtube.com/watch?v=JAwz4EsvJEA'},
-  {g:'avos',d:'01/07',h:'🇺🇸 EUA',a:'🇧🇦 Bósnia',t:'21:00',l:"Levi's Stadium · Santa Clara",bra:false,yt:'https://www.youtube.com/watch?v=CWo3HBSvQSg'},
-  {g:'avos',d:'02/07',h:'🇪🇸 Espanha',a:'🇦🇹 Áustria',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false,yt:'https://www.youtube.com/watch?v=__xDLB2Pi0w'},
-  {g:'avos',d:'02/07',h:'🇵🇹 Portugal',a:'🇭🇷 Croácia',t:'20:00',l:'BMO Field · Toronto',bra:false,yt:'https://www.youtube.com/watch?v=jg4xEFUnFmk'},
   // ── 2ª RODADA ──
   {g:'A',d:'18/06',h:'🇨🇿 Tchéquia',a:'🇿🇦 África do Sul',t:'13:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
   {g:'B',d:'18/06',h:'🇨🇭 Suíça',a:'🇧🇦 Bósnia',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false},
@@ -2868,29 +2857,47 @@ var MATCHES=[
   {g:'L',d:'17/06',h:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',a:'🇭🇷 Croácia',t:'17:00',l:'AT&T Stadium · Dallas',bra:false},
   {g:'L',d:'17/06',h:'🇬🇭 Gana',a:'🇵🇦 Panamá',t:'20:00',l:'BMO Field · Toronto',bra:false},
   {g:'K',d:'17/06',h:'🇺🇿 Uzbequistão',a:'🇨🇴 Colômbia',t:'23:00',l:'Estádio Azteca · Cidade do México',bra:false},,
-  // ── OITAVAS DE FINAL ──
-  {g:'oitavas',d:'03/07',h:'🇨🇭 Suíça',a:'🇩🇿 Argélia',t:'00:00',l:'BC Place · Vancouver',bra:false,yt:'https://www.youtube.com/watch?v=jzjZOLYj4oY'},
-  {g:'oitavas',d:'03/07',h:'🇦🇺 Austrália',a:'🇪🇬 Egito',t:'15:00',l:'AT&T Stadium · Arlington',bra:false,yt:'https://www.youtube.com/watch?v=OwVHSCdF37g'},
-  {g:'oitavas',d:'03/07',h:'🇦🇷 Argentina',a:'🇨🇻 Cabo Verde',t:'19:00',l:'Hard Rock Stadium · Miami',bra:false,yt:'https://www.youtube.com/watch?v=hfenWvZ5HAU'},
-  {g:'oitavas',d:'03/07',h:'🇨🇴 Colômbia',a:'🇬🇭 Gana',t:'22:30',l:'Arrowhead Stadium · Kansas City',bra:false,yt:'https://www.youtube.com/watch?v=pgm5kUr6EVU'},
+
+
+
+,
+  // ── 16 AVOS DE FINAL (28/06 - 03/07) ──
+  {g:'16avos',d:'28/06',h:'🇿🇦 África do Sul',a:'🇨🇦 Canadá',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false},
+  {g:'16avos',d:'29/06',h:'🇧🇷 Brasil',a:'🇯🇵 Japão',t:'14:00',l:'NRG Stadium · Houston',bra:true},
+  {g:'16avos',d:'29/06',h:'🇩🇪 Alemanha',a:'🇵🇾 Paraguai',t:'17:30',l:'Gillette Stadium · Boston',bra:false},
+  {g:'16avos',d:'29/06',h:'🇳🇱 Holanda',a:'🇲🇦 Marrocos',t:'22:00',l:'El Gigante de Acero · Monterrey',bra:false},
+  {g:'16avos',d:'30/06',h:'🇨🇮 Costa do Marfim',a:'🇳🇴 Noruega',t:'14:00',l:'AT&T Stadium · Dallas',bra:false},
+  {g:'16avos',d:'30/06',h:'🇫🇷 França',a:'🇸🇪 Suécia',t:'18:00',l:'MetLife Stadium · Nova Jersey',bra:false},
+  {g:'16avos',d:'30/06',h:'🇲🇽 México',a:'🇪🇨 Equador',t:'22:00',l:'Estádio Azteca · Cidade do México',bra:false},
+  {g:'16avos',d:'01/07',h:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',a:'🇨🇩 RD Congo',t:'13:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
+  {g:'16avos',d:'01/07',h:'🇧🇪 Bélgica',a:'🇸🇳 Senegal',t:'17:00',l:'Lumen Field · Seattle',bra:false},
+  {g:'16avos',d:'01/07',h:'🇺🇸 EUA',a:'🇧🇦 Bósnia',t:'21:00',l:"Levi's Stadium · Santa Clara",bra:false},
+  {g:'16avos',d:'02/07',h:'🇪🇸 Espanha',a:'🇦🇹 Áustria',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false},
+  {g:'16avos',d:'02/07',h:'🇵🇹 Portugal',a:'🇭🇷 Croácia',t:'20:00',l:'BMO Field · Toronto',bra:false},
+  {g:'16avos',d:'03/07',h:'🇨🇭 Suíça',a:'🇩🇿 Argélia',t:'00:00',l:'BC Place · Vancouver',bra:false,yt:'https://www.youtube.com/watch?v=jzjZOLYj4oY'},
+  {g:'16avos',d:'03/07',h:'🇦🇺 Austrália',a:'🇪🇬 Egito',t:'15:00',l:'AT&T Stadium · Arlington',bra:false,yt:'https://www.youtube.com/watch?v=OwVHSCdF37g'},
+  {g:'16avos',d:'03/07',h:'🇦🇷 Argentina',a:'🇨🇻 Cabo Verde',t:'19:00',l:'Hard Rock Stadium · Miami',bra:false,yt:'https://www.youtube.com/watch?v=hfenWvZ5HAU'},
+  {g:'16avos',d:'03/07',h:'🇨🇴 Colômbia',a:'🇬🇭 Gana',t:'22:30',l:'Arrowhead Stadium · Kansas City',bra:false,yt:'https://www.youtube.com/watch?v=pgm5kUr6EVU'},
+  // ── OITAVAS DE FINAL (04/07 - 07/07) ──
   {g:'oitavas',d:'04/07',h:'🇨🇦 Canadá',a:'🇲🇦 Marrocos',t:'14:00',l:'BMO Field · Toronto',bra:false},
   {g:'oitavas',d:'04/07',h:'🇵🇾 Paraguai',a:'🇫🇷 França',t:'18:00',l:'Lincoln Financial Field · Filadélfia',bra:false},
   {g:'oitavas',d:'05/07',h:'🇧🇷 Brasil',a:'🇳🇴 Noruega',t:'17:00',l:'MetLife Stadium · Nova Jersey',bra:true},
   {g:'oitavas',d:'05/07',h:'🇲🇽 México',a:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',t:'21:00',l:'Lumen Field · Seattle',bra:false},
   {g:'oitavas',d:'06/07',h:'🇵🇹 Portugal',a:'🇪🇸 Espanha',t:'16:00',l:'AT&T Stadium · Dallas',bra:false},
   {g:'oitavas',d:'06/07',h:'🇺🇸 EUA',a:'🇧🇪 Bélgica',t:'21:00',l:'Lumen Field · Seattle',bra:false},
-  // ── QUARTAS DE FINAL ──
+  {g:'oitavas',d:'07/07',h:'🏅 A definir',a:'🏅 A definir',t:'13:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
+  {g:'oitavas',d:'07/07',h:'🇨🇭 Suíça',a:'🏅 A definir',t:'17:00',l:'BC Place · Vancouver',bra:false},
+  // ── QUARTAS DE FINAL (09/07 - 11/07) ──
   {g:'quartas',d:'09/07',h:'🏅 A definir',a:'🏅 A definir',t:'17:00',l:'Gillette Stadium · Boston',bra:false},
-  {g:'quartas',d:'09/07',h:'🏅 A definir',a:'🏅 A definir',t:'21:00',l:'A definir',bra:false},
-  {g:'quartas',d:'10/07',h:'🏅 A definir',a:'🏅 A definir',t:'17:00',l:'A definir',bra:false},
-  {g:'quartas',d:'11/07',h:'🏅 A definir',a:'🏅 A definir',t:'17:00',l:'A definir',bra:false},
-  {g:'quartas',d:'11/07',h:'🏅 A definir',a:'🏅 A definir',t:'21:00',l:'A definir',bra:false},
-  // ── SEMIFINAIS ──
+  {g:'quartas',d:'10/07',h:'🏅 A definir',a:'🏅 A definir',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false},
+  {g:'quartas',d:'11/07',h:'🏅 A definir',a:'🏅 A definir',t:'18:00',l:'Hard Rock Stadium · Miami',bra:false},
+  {g:'quartas',d:'11/07',h:'🏅 A definir',a:'🏅 A definir',t:'22:00',l:'Arrowhead Stadium · Kansas City',bra:false},
+  // ── SEMIFINAIS (14/07 - 15/07) ──
   {g:'semi',d:'14/07',h:'🏅 A definir',a:'🏅 A definir',t:'16:00',l:'AT&T Stadium · Dallas',bra:false},
   {g:'semi',d:'15/07',h:'🏅 A definir',a:'🏅 A definir',t:'16:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
-  // ── DISPUTA 3º LUGAR ──
+  // ── DISPUTA 3º LUGAR (18/07) ──
   {g:'terceiro',d:'18/07',h:'🏅 A definir',a:'🏅 A definir',t:'17:00',l:'Hard Rock Stadium · Miami',bra:false},
-  // ── FINAL ──
+  // ── FINAL (19/07) ──
   {g:'final',d:'19/07',h:'🏅 A definir',a:'🏅 A definir',t:'16:00',l:'MetLife Stadium · Nova Jersey',bra:false}
 ];
 
@@ -4680,7 +4687,7 @@ function saveResult(){
 }
 
 // ─── RENDER RESULTS — rich cards ─────────────────────────────────────────────
-var FASE_LABEL={fase_grupos:'Fase de Grupos',oitavas:'Oitavas de Final',quartas:'Quartas de Final',semi:'Semifinal',terceiro:'3º Lugar',final:'Final'};
+var FASE_LABEL={fase_grupos:'Fase de Grupos',avos:'Segunda Fase (16 avos)','16avos':'Segunda Fase (16 avos)',oitavas:'Oitavas de Final',quartas:'Quartas de Final',semi:'Semifinal',terceiro:'3º Lugar',final:'Final'};
 
 function renderResults(){
   var list=document.getElementById('res-list');
@@ -4689,7 +4696,7 @@ function renderResults(){
   var filtered=RESULTS.filter(function(r){
     if(RES_FILTER==='all') return true;
     if(RES_FILTER==='bra') return r.bra;
-    return r.fase===RES_FILTER;
+    return r.fase===RES_FILTER||(RES_FILTER==='16avos'&&r.fase==='avos');
   });
 
   counter.textContent=filtered.length+' resultado'+(filtered.length!==1?'s':'')+' encontrado'+(filtered.length!==1?'s':'');
