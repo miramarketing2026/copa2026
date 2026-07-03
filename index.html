@@ -1812,7 +1812,7 @@ var GROUPS=[
   {l:'L',color:'#001a3a',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra',code:'ENG',conf:'UEFA',rank:5},{f:'🇭🇷',n:'Croácia',code:'CRO',conf:'UEFA',rank:11},{f:'🇬🇭',n:'Gana',code:'GHA',conf:'CAF',rank:65},{f:'🇵🇦',n:'Panamá',code:'PAN',conf:'CONCACAF',rank:43}]}
 ];
 
-var APP_VERSION = '2026-07-03-2';
+var APP_VERSION = '2026-07-03-3';
 
 var MATCHES=[
   // ── 1ª RODADA ──
@@ -5127,6 +5127,57 @@ function show(id,btn){
 
 <!-- Aviso de permissão -->
 <div id="pwd-aviso" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(200,80,0,.95);color:#fff;padding:10px 20px;border-radius:10px;font-size:.82rem;font-weight:700;z-index:9998;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.5)"></div>
+
+<!-- ══ SERVICE WORKER — atualização automática ══ -->
+<script>
+if('serviceWorker' in navigator){
+  // Registra o SW inline via blob (sem precisar de arquivo separado)
+  var swVersion = typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1';
+  var swCode = `
+const CACHE = 'copa2026-v${swVersion}';
+self.addEventListener('install', e => {
+  self.skipWaiting();
+});
+self.addEventListener('activate', e => {
+  e.waitUntil(
+    caches.keys().then(keys =>
+      Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+    ).then(() => self.clients.claim())
+  );
+});
+self.addEventListener('fetch', e => {
+  if(e.request.mode === 'navigate'){
+    e.respondWith(
+      fetch(e.request).then(res => {
+        var clone = res.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+        return res;
+      }).catch(() => caches.match(e.request))
+    );
+  }
+});
+self.addEventListener('message', e => {
+  if(e.data === 'skipWaiting') self.skipWaiting();
+});
+`;
+  var blob = new Blob([swCode.replace('${swVersion}', swVersion)], {type:'application/javascript'});
+  var swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl, {scope:'/'}).then(function(reg){
+    reg.addEventListener('updatefound', function(){
+      var newSW = reg.installing;
+      newSW.addEventListener('statechange', function(){
+        if(newSW.state === 'installed' && navigator.serviceWorker.controller){
+          // Nova versão instalada — recarregar automaticamente
+          newSW.postMessage('skipWaiting');
+          navigator.serviceWorker.addEventListener('controllerchange', function(){
+            window.location.reload();
+          });
+        }
+      });
+    });
+  }).catch(function(e){ console.log('SW:', e); });
+}
+</script>
 
 </body>
 </html>
