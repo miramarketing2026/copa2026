@@ -1812,7 +1812,7 @@ var GROUPS=[
   {l:'L',color:'#001a3a',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra',code:'ENG',conf:'UEFA',rank:5},{f:'🇭🇷',n:'Croácia',code:'CRO',conf:'UEFA',rank:11},{f:'🇬🇭',n:'Gana',code:'GHA',conf:'CAF',rank:65},{f:'🇵🇦',n:'Panamá',code:'PAN',conf:'CONCACAF',rank:43}]}
 ];
 
-var APP_VERSION = '2026-07-04-3';
+var APP_VERSION = '2026-07-04-4';
 
 var SQUADS={
   BRA:{name:'Brasil',flag:'🇧🇷',color:'#009C3B',bg:'#002010',coach:'Carlo Ancelotti',rank:6,titles:5,founded:1914,conf:'CONMEBOL',
@@ -5032,20 +5032,20 @@ function show(id,btn){
   window.scrollTo(0,0);
 }
 
-// ─── SISTEMA DE ATUALIZAÇÃO AUTOMÁTICA (sem reinstalar o app) ──────────────────
+// ─── SISTEMA DE ATUALIZAÇÃO AUTOMÁTICA ─────────────────────────────
 (function(){
   try{
-    var STORAGE_KEY='copa2026_app_version';
-    var lastSeen=localStorage.getItem(STORAGE_KEY);
-    if(lastSeen && lastSeen!==APP_VERSION){
-      // versão mudou = nova atualização disponível -> avisa o usuário
-      var banner=document.createElement('div');
-      banner.id='update-banner';
-      banner.style.cssText='position:fixed;top:0;left:0;right:0;z-index:99999;background:linear-gradient(135deg,#00b34a,#007a30);color:#fff;padding:12px 16px;text-align:center;font-weight:700;font-size:.85rem;box-shadow:0 4px 12px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap';
-      banner.innerHTML='🔄 Nova atualização disponível! <button onclick="location.reload(true)" style="background:#fff;color:#007a30;border:none;padding:6px 14px;border-radius:20px;font-weight:800;cursor:pointer;font-size:.8rem">Atualizar agora</button>';
-      document.body.prepend(banner);
+    var KEY = 'copa2026_ver';
+    var stored = localStorage.getItem(KEY);
+    if(stored && stored !== APP_VERSION){
+      // Limpar TODO o cache do app
+      localStorage.clear();
+      localStorage.setItem(KEY, APP_VERSION);
+      // Forçar reload sem cache
+      window.location.reload(true);
+      return;
     }
-    localStorage.setItem(STORAGE_KEY, APP_VERSION);
+    localStorage.setItem(KEY, APP_VERSION);
   }catch(e){}
 })();
 
@@ -5108,36 +5108,7 @@ function show(id,btn){
 <!-- Aviso de permissão -->
 <div id="pwd-aviso" style="display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:rgba(200,80,0,.95);color:#fff;padding:10px 20px;border-radius:10px;font-size:.82rem;font-weight:700;z-index:9998;white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,.5)"></div>
 
-<!-- ══ SERVICE WORKER — atualização automática ══ -->
-<script>
-if('serviceWorker' in navigator){
-  var swVersion = typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1';
-  // Usar URL relativa ao invés de blob — funciona no GitHub Pages
-  // O SW é embutido como data URI base64
-  var swCode = [
-    'const CACHE="copa2026-v'+swVersion+'";',
-    'self.addEventListener("install",e=>{self.skipWaiting();});',
-    'self.addEventListener("activate",e=>{',
-    '  e.waitUntil(caches.keys().then(keys=>',
-    '    Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))',
-    '  ).then(()=>self.clients.claim()));',
-    '});',
-    'self.addEventListener("fetch",e=>{',
-    '  if(e.request.mode==="navigate"){',
-    '    e.respondWith(fetch(e.request).then(res=>{',
-    '      caches.open(CACHE).then(c=>c.put(e.request,res.clone()));',
-    '      return res;',
-    '    }).catch(()=>caches.match(e.request)));',
-    '  }',
-    '});'
-  ].join('\n');
-  var b64 = btoa(unescape(encodeURIComponent(swCode)));
-  var swUrl = 'data:application/javascript;base64,'+b64;
-  navigator.serviceWorker.register(swUrl).catch(function(){
-    // data: URL também pode falhar em alguns browsers — silenciar erro
-  });
-}
-</script>
+
 
 </body>
 </html>
