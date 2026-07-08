@@ -1812,7 +1812,7 @@ var GROUPS=[
   {l:'L',color:'#001a3a',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra',code:'ENG',conf:'UEFA',rank:5},{f:'🇭🇷',n:'Croácia',code:'CRO',conf:'UEFA',rank:11},{f:'🇬🇭',n:'Gana',code:'GHA',conf:'CAF',rank:65},{f:'🇵🇦',n:'Panamá',code:'PAN',conf:'CONCACAF',rank:43}]}
 ];
 
-var APP_VERSION = '2026-07-07-2';
+var APP_VERSION = '2026-07-07-3';
 
 var SQUADS={
   BRA:{name:'Brasil',flag:'🇧🇷',color:'#009C3B',bg:'#002010',coach:'Carlo Ancelotti',rank:6,titles:5,founded:1914,conf:'CONMEBOL',
@@ -2891,7 +2891,7 @@ var MATCHES=[
   {g:'quartas',d:'09/07',h:'🇫🇷 França',a:'🇲🇦 Marrocos',t:'17:00',l:'Gillette Stadium · Boston',bra:false},
   {g:'quartas',d:'10/07',h:'🇪🇸 Espanha',a:'🇧🇪 Bélgica',t:'16:00',l:'SoFi Stadium · Los Angeles',bra:false},
   {g:'quartas',d:'11/07',h:'🇳🇴 Noruega',a:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',t:'18:00',l:'Hard Rock Stadium · Miami',bra:false},
-  {g:'quartas',d:'11/07',h:'🏅 A definir',a:'🏅 A definir',t:'22:00',l:'Arrowhead Stadium · Kansas City',bra:false},
+  {g:'quartas',d:'11/07',h:'🇦🇷 Argentina',a:'🇨🇭 Suíça',t:'22:00',l:'Arrowhead Stadium · Kansas City',bra:false},
   // ── SEMIFINAIS (14/07 - 15/07) ──
   {g:'semi',d:'14/07',h:'🏅 A definir',a:'🏅 A definir',t:'16:00',l:'AT&T Stadium · Dallas',bra:false},
   {g:'semi',d:'15/07',h:'🏅 A definir',a:'🏅 A definir',t:'16:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
@@ -4265,6 +4265,7 @@ function isColab(){ return _nivel >= 1; }
 
 // ─── RESULTADOS ──────────────────────────────────────────────────────────────
 var RESULTS = [
+  {id:1752000000002,fase:'oitavas',data:'07/07·17:00',minuto:'',estadio:'BC Place · Vancouver',flag1:'🇨🇭',time1:'Suíça',flag2:'🇨🇴',time2:'Colômbia',gol1:0,gol2:0,extra:'pen',pen1:4,pen2:3,gols:[],cartoes:[{jogador:'XHAKA',min:'50',tipo:'🟨',time:'SUI'},{jogador:'ZAKARIA',min:'',tipo:'🟨',time:'SUI'},{jogador:'MUHEIM',min:'',tipo:'🟨',time:'SUI'},{jogador:'L.SUÁREZ',min:'',tipo:'🟨',time:'COL'},{jogador:'SÁNCHEZ',min:'',tipo:'🟨',time:'COL'}],mom:'KOBEL',destaque:'Suíça elimina Colômbia nos pênaltis! Kobel defende 2 e Suíça enfrenta Argentina nas quartas',obs:'0x0 no tempo normal e prorrogação. Pênaltis 4x3: Sánchez, Akanji e Cucho Hernández desperdiçaram. Kobel foi o herói. Suíça × Argentina nas quartas (11/07 22h · Kansas City).',bra:false,status:'final',by:'admin',nome:'Bar',at:'07/07'},
   {id:1752000000001,fase:'oitavas',data:'07/07·13:00',minuto:'',estadio:'Mercedes-Benz Stadium · Atlanta',flag1:'🇦🇷',time1:'Argentina',flag2:'🇪🇬',time2:'Egito',gol1:3,gol2:2,extra:'',pen1:'',pen2:'',gols:[{jogador:'Y.IBRAHIM',min:'14',tipo:''},{jogador:'ROMERO',min:'78',tipo:''},{jogador:'ZICO',min:'66',tipo:''},{jogador:'MESSI',min:'83',tipo:''},{jogador:'E.FERNÁNDEZ',min:'90',tipo:''}],cartoes:[{jogador:'SHOBEIR',min:'',tipo:'🟨',time:'EGY'},{jogador:'H.FATHY',min:'',tipo:'🟨',time:'EGY'},{jogador:'H.HASSAN',min:'',tipo:'🟨',time:'EGY'},{jogador:'M.ATTIA',min:'',tipo:'🟨',time:'EGY'}],mom:'MESSI',destaque:'VIRADA ÉPICA! Argentina vira de 0x2 com Romero, Messi e Enzo em 12 minutos!',obs:'Egito abriu 2x0. Messi perdeu pênalti e acertou a trave. Virada incrível: Romero 78\', Messi 83\', Enzo 90\'. Argentina aguarda Suíça ou Colômbia nas quartas (11/07 22h Kansas City).',bra:false,status:'final',by:'admin',nome:'Bar',at:'07/07'},
   {id:1751900000002,fase:'oitavas',data:'06/07·21:00',minuto:'',estadio:'Lumen Field · Seattle',flag1:'🇺🇸',time1:'EUA',flag2:'🇧🇪',time2:'Bélgica',gol1:1,gol2:4,extra:'',pen1:'',pen2:'',gols:[{jogador:'DE KETELAERE',min:'9',tipo:''},{jogador:'TILLMAN',min:'31',tipo:'(falta)'},{jogador:'DE KETELAERE',min:'33',tipo:''},{jogador:'VANAKEN',min:'57',tipo:''},{jogador:'LUKAKU',min:'90+3',tipo:''}],cartoes:[{jogador:'McKENNIE',min:'',tipo:'🟨',time:'EUA'},{jogador:'TILLMAN',min:'',tipo:'🟨',time:'EUA'}],mom:'DE KETELAERE',destaque:'Bélgica goleia EUA 4x1! De Ketelaere 2 gols. Bélgica enfrenta Espanha nas quartas',obs:'Polêmica: Balogun estava suspenso mas FIFA liberou. De Ketelaere brilhou (2 gols). Vanaken e Lukaku fecharam. EUA eliminado em casa. Bélgica × Espanha nas quartas (10/07 · 16h · LA).',bra:false,status:'final',by:'admin',nome:'Bar',at:'06/07'},
   {id:1751900000001,fase:'oitavas',data:'06/07·16:00',minuto:'',estadio:'AT&T Stadium · Dallas',flag1:'🇵🇹',time1:'Portugal',flag2:'🇪🇸',time2:'Espanha',gol1:0,gol2:1,extra:'',pen1:'',pen2:'',gols:[{jogador:'MERINO',min:'90+2',tipo:''}],cartoes:[],mom:'LAMINE YAMAL',destaque:'Espanha elimina Portugal nos acréscimos! Merino decide e CR7 se despede das Copas',obs:'Merino recebeu de Ferran Torres e bateu na saída de Diogo Costa (90+2\'). Cristiano Ronaldo faz seu último jogo em Copa do Mundo. Travessão de Nuno Mendes. Espanha × Bélgica nas quartas (10/07 · 16h · LA).',bra:false,status:'final',by:'admin',nome:'Bar',at:'06/07'},
