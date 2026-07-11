@@ -1812,7 +1812,7 @@ var GROUPS=[
   {l:'L',color:'#001a3a',teams:[{f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',n:'Inglaterra',code:'ENG',conf:'UEFA',rank:5},{f:'🇭🇷',n:'Croácia',code:'CRO',conf:'UEFA',rank:11},{f:'🇬🇭',n:'Gana',code:'GHA',conf:'CAF',rank:65},{f:'🇵🇦',n:'Panamá',code:'PAN',conf:'CONCACAF',rank:43}]}
 ];
 
-var APP_VERSION = '2026-07-09-2';
+var APP_VERSION = '2026-07-11-1';
 
 var SQUADS={
   BRA:{name:'Brasil',flag:'🇧🇷',color:'#009C3B',bg:'#002010',coach:'Carlo Ancelotti',rank:6,titles:5,founded:1914,conf:'CONMEBOL',
@@ -2893,7 +2893,7 @@ var MATCHES=[
   {g:'quartas',d:'11/07',h:'🇳🇴 Noruega',a:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Inglaterra',t:'18:00',l:'Hard Rock Stadium · Miami',bra:false},
   {g:'quartas',d:'11/07',h:'🇦🇷 Argentina',a:'🇨🇭 Suíça',t:'22:00',l:'Arrowhead Stadium · Kansas City',bra:false},
   // ── SEMIFINAIS (14/07 - 15/07) ──
-  {g:'semi',d:'14/07',h:'🇫🇷 França',a:'🏅 Espanha ou Bélgica',t:'16:00',l:'AT&T Stadium · Dallas',bra:false},
+  {g:'semi',d:'14/07',h:'🇫🇷 França',a:'🇪🇸 Espanha',t:'16:00',l:'AT&T Stadium · Dallas',bra:false},
   {g:'semi',d:'15/07',h:'🏅 Noruega ou Inglaterra',a:'🏅 Argentina ou Suíça',t:'16:00',l:'Mercedes-Benz Stadium · Atlanta',bra:false},
   // ── DISPUTA 3º LUGAR (18/07) ──
   {g:'terceiro',d:'18/07',h:'🏅 A definir',a:'🏅 A definir',t:'17:00',l:'Hard Rock Stadium · Miami',bra:false},
@@ -4265,6 +4265,7 @@ function isColab(){ return _nivel >= 1; }
 
 // ─── RESULTADOS ──────────────────────────────────────────────────────────────
 var RESULTS = [
+  {id:1752200000001,fase:'quartas',data:'10/07·16:00',minuto:'',estadio:'SoFi Stadium · Los Angeles',flag1:'🇪🇸',time1:'Espanha',flag2:'🇧🇪',time2:'Bélgica',gol1:2,gol2:1,extra:'',pen1:'',pen2:'',gols:[{jogador:'FABIÁN RUIZ',min:'',tipo:''},{jogador:'DE KETELAERE',min:'',tipo:'(cabeça)'},{jogador:'MERINO',min:'88',tipo:''}],cartoes:[{jogador:'COURTOIS',min:'25',tipo:'🚑 lesão',time:'BEL'}],mom:'MERINO',destaque:'Merino decide de novo! Espanha vence Bélgica e pega França na semifinal',obs:'Fabián Ruiz abre. De Ketelaere empata de cabeça. Courtois se lesiona (25\' 2T) e Lammens entra. Merino (reserva) aparece no 88\' após rebote de Lammens e decide. Espanha invicta há 36 jogos — quase recorde europeu (Itália teve 37).',bra:false,status:'final',by:'admin',nome:'Bar',at:'10/07'},
   {id:1752100000001,fase:'quartas',data:'09/07·17:00',minuto:'',estadio:'Gillette Stadium · Boston',flag1:'🇫🇷',time1:'França',flag2:'🇲🇦',time2:'Marrocos',gol1:2,gol2:0,extra:'',pen1:'',pen2:'',gols:[{jogador:'MBAPPÉ',min:'60',tipo:''},{jogador:'DEMBÉLÉ',min:'65',tipo:''}],cartoes:[{jogador:'EL AYNAOUI',min:'',tipo:'🟨',time:'MAR'},{jogador:'MAZRAOUI',min:'',tipo:'🟨',time:'MAR'}],mom:'MBAPPÉ',destaque:'França 2x0 Marrocos! Mbappé perde pênalti no 1T mas decide no 2T. França na semifinal!',obs:'Mbappé perdeu pênalti (Bono defendeu) aos 25\'. No 2T: Mbappé (60\') e Dembélé (65\'). França aguarda Espanha ou Bélgica (10/07). Mbappé chega a 9 gols na Copa, 1 atrás de Messi (10).',bra:false,status:'final',by:'admin',nome:'Bar',at:'09/07'},
   {id:1752000000002,fase:'oitavas',data:'07/07·17:00',minuto:'',estadio:'BC Place · Vancouver',flag1:'🇨🇭',time1:'Suíça',flag2:'🇨🇴',time2:'Colômbia',gol1:0,gol2:0,extra:'pen',pen1:4,pen2:3,gols:[],cartoes:[{jogador:'XHAKA',min:'50',tipo:'🟨',time:'SUI'},{jogador:'ZAKARIA',min:'',tipo:'🟨',time:'SUI'},{jogador:'MUHEIM',min:'',tipo:'🟨',time:'SUI'},{jogador:'L.SUÁREZ',min:'',tipo:'🟨',time:'COL'},{jogador:'SÁNCHEZ',min:'',tipo:'🟨',time:'COL'}],mom:'KOBEL',destaque:'Suíça elimina Colômbia nos pênaltis! Kobel defende 2 e Suíça enfrenta Argentina nas quartas',obs:'0x0 no tempo normal e prorrogação. Pênaltis 4x3: Sánchez, Akanji e Cucho Hernández desperdiçaram. Kobel foi o herói. Suíça × Argentina nas quartas (11/07 22h · Kansas City).',bra:false,status:'final',by:'admin',nome:'Bar',at:'07/07'},
   {id:1752000000001,fase:'oitavas',data:'07/07·13:00',minuto:'',estadio:'Mercedes-Benz Stadium · Atlanta',flag1:'🇦🇷',time1:'Argentina',flag2:'🇪🇬',time2:'Egito',gol1:3,gol2:2,extra:'',pen1:'',pen2:'',gols:[{jogador:'Y.IBRAHIM',min:'14',tipo:''},{jogador:'ROMERO',min:'78',tipo:''},{jogador:'ZICO',min:'66',tipo:''},{jogador:'MESSI',min:'83',tipo:''},{jogador:'E.FERNÁNDEZ',min:'90',tipo:''}],cartoes:[{jogador:'SHOBEIR',min:'',tipo:'🟨',time:'EGY'},{jogador:'H.FATHY',min:'',tipo:'🟨',time:'EGY'},{jogador:'H.HASSAN',min:'',tipo:'🟨',time:'EGY'},{jogador:'M.ATTIA',min:'',tipo:'🟨',time:'EGY'}],mom:'MESSI',destaque:'VIRADA ÉPICA! Argentina vira de 0x2 com Romero, Messi e Enzo em 12 minutos!',obs:'Egito abriu 2x0. Messi perdeu pênalti e acertou a trave. Virada incrível: Romero 78\', Messi 83\', Enzo 90\'. Argentina aguarda Suíça ou Colômbia nas quartas (11/07 22h Kansas City).',bra:false,status:'final',by:'admin',nome:'Bar',at:'07/07'},
